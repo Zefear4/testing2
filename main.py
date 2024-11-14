@@ -1,23 +1,9 @@
-from abc import ABC, abstractmethod
 from typing import List, Optional
 from pydantic import BaseModel, Field, validator
 import json
 
-class BaseTask(ABC):
-    @abstractmethod
-    def complete(self):
-        """Отметить задачу как выполненную."""
-        pass
+from Base import BaseTask
 
-    @abstractmethod
-    def is_completed(self) -> bool:
-        """Проверить, выполнена ли задача."""
-        pass
-
-    @abstractmethod
-    def postpone(self, days: int):
-        """Отложить задачу на заданное количество дней."""
-        pass
 
 class Task(BaseTask, BaseModel):
     name: str
