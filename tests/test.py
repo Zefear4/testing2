@@ -85,7 +85,7 @@ class TestTaskManager(unittest.TestCase):
 
     def test_save_to_file_and_load_from_file(self):
         # Тестируем сохранение в файл и загрузку из файла
-        filename = 'test_tasks.json'
+        filename = '../test_tasks.json'
         self.manager.save_to_file(filename)
         new_manager = TaskManager.load_from_file(filename)
         tasks = new_manager.get_tasks()
