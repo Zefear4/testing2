@@ -3,7 +3,6 @@ from typing import List, Optional
 from pydantic import BaseModel, Field, validator
 import json
 
-
 class BaseTask(ABC):
     @abstractmethod
     def complete(self):
