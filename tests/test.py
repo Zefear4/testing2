@@ -108,8 +108,13 @@ class TestTaskManager(unittest.TestCase):
         # Тестируем откладывание задачи через менеджер
         original_date = self.task2.due_date
         self.task2.postpone(2)
+
+        tasks = self.manager.get_tasks()
+        updated_task = next((task for task in tasks if task.name == self.task2.name), None)
+        self.assertIsNotNone(updated_task)
+
         new_due_date = (datetime.strptime(original_date, '%Y-%m-%d') + timedelta(days=2)).strftime('%Y-%m-%d')
-        self.assertEqual(self.task2.due_date, new_due_date)
+        self.assertEqual(updated_task.due_date, new_due_date)
 
 if __name__ == '__main__':
     unittest.main()
