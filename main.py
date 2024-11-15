@@ -2,7 +2,7 @@ from typing import List, Optional
 from pydantic import BaseModel, Field, validator
 import json
 
-from Base import BaseTask
+from BaseTask import BaseTask
 
 
 class Task(BaseTask, BaseModel):
