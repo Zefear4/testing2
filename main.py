@@ -4,7 +4,6 @@ import json
 
 from BaseTask import BaseTask
 
-
 class Task(BaseTask, BaseModel):
     name: str
     description: str = ''
