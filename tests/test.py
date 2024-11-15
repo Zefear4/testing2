@@ -160,27 +160,5 @@ class TestAcceptance(unittest.TestCase):
         self.assertEqual(len(loaded_manager.get_tasks()), num_tasks)
         self.assertLess(load_time, timedelta(seconds=5), "Загрузка заняла слишком много времени")
 
-class TestAcceptance(unittest.TestCase):
-
-    def test_load_large_number_of_tasks(self):
-        """Загрузить большое количество задач."""
-        num_tasks = 1000
-        filename = "large_tasks.json"
-        manager = TaskManager()
-
-        # Создаем и сохраняем большое количество задач
-        for i in range(num_tasks):
-            manager.add_task(Task(name=f"Задача {i+1}"))
-        manager.save_to_file(filename)
-
-
-        start_time = datetime.now()
-        loaded_manager = TaskManager.load_from_file(filename)
-        end_time = datetime.now()
-        load_time = end_time - start_time
-
-        self.assertEqual(len(loaded_manager.get_tasks()), num_tasks)
-        self.assertLess(load_time, timedelta(seconds=5), "Загрузка заняла слишком много времени")
-
 if __name__ == '__main__':
     unittest.main()
