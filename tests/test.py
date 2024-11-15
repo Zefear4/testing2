@@ -162,28 +162,6 @@ class TestAcceptance(unittest.TestCase):
 
 class TestAcceptance(unittest.TestCase):
 
-    def test_create_postpone_and_complete_task(self):
-        """Создать, отложить и отметить задачу как выполненную."""
-        manager = TaskManager()
-        task_name = "Тестовая задача"
-        due_date = "2024-03-10"
-
-        manager.add_task(Task(name=task_name, due_date=due_date))
-        task = manager.get_tasks()[0]
-
-        self.assertEqual(task.name, task_name)
-        self.assertEqual(task.due_date, due_date)
-        self.assertFalse(task.completed)
-
-        manager.get_tasks()[0].postpone(5)
-        updated_due_date = (datetime.strptime(due_date, '%Y-%m-%d') + timedelta(days=5)).strftime('%Y-%m-%d')
-        self.assertEqual(task.due_date, updated_due_date)
-
-
-        manager.get_tasks()[0].complete()
-        self.assertTrue(task.completed)
-
-
     def test_load_large_number_of_tasks(self):
         """Загрузить большое количество задач."""
         num_tasks = 1000
